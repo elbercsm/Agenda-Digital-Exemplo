@@ -2,6 +2,8 @@ package br.com.iftm.entity;
 
 import br.com.iftm.entity.enums.Estado;
 
+//@Entity
+//@Table(name = "TB_CIDADE")
 public class Cidade {
 
 	private String nome;

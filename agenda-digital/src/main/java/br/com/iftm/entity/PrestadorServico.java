@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.com.iftm.entity.enums.TipoLogradouro;
 
+//@Entity
+//@Table(name = "TB_PRESTADORSERVICO")
 public class PrestadorServico {
 
 	private Integer codigo;

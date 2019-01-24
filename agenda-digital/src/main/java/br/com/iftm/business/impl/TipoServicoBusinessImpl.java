@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import br.com.iftm.business.BusinessException;
@@ -12,6 +14,7 @@ import br.com.iftm.dao.TipoServicoDAO;
 import br.com.iftm.entity.TipoServico;
 
 @Service
+@Transactional
 public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	@Autowired
@@ -19,6 +22,7 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	// Create
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public TipoServico create(TipoServico tipoServico) throws BusinessException {
 
 		if (StringUtils.isEmpty(tipoServico.getNome())) {
@@ -30,6 +34,7 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	// Get
 	@Override
+	@Transactional(readOnly = true)
 	public List<TipoServico> read() throws BusinessException {
 
 		return dao.read();
@@ -49,6 +54,7 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	// Update
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public TipoServico update(TipoServico tipoServico) throws BusinessException {
 
 		if (tipoServico.getCodigo() == null) {
@@ -64,6 +70,7 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	// Delete
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Integer id) throws BusinessException {
 
 		if (id == null) {

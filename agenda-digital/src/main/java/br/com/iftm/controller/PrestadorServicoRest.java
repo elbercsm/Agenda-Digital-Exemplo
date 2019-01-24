@@ -1,9 +1,5 @@
 package br.com.iftm.controller;
 
-import java.util.List;
-
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,28 +56,6 @@ public class PrestadorServicoRest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body(e);
-		}
-
-	}
-
-	@GetMapping("/filtro/nome")
-
-	public ResponseEntity<?> readyByName(@PathParam("nome") String nome) {
-
-		try {
-
-			List<PrestadorServico> readByName = business.readByName(nome);
-
-			if (readByName.isEmpty()) {
-				return ResponseEntity.notFound().build();
-			}
-			return ResponseEntity.ok(readByName);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-			return ResponseEntity.notFound().build();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.badRequest().build();
 		}
 
 	}

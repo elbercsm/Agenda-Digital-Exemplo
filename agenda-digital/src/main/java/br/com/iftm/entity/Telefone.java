@@ -1,5 +1,7 @@
 package br.com.iftm.entity;
 
+//@Entity
+//@Table(name = "TB_TELEFONE")
 public class Telefone {
 
 	private Integer codigo;
