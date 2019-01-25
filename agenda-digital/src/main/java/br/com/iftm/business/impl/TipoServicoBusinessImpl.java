@@ -42,6 +42,7 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 
 	// Get By Name
 	@Override
+	@Transactional(readOnly = true)
 	public List<TipoServico> readByName(String nome) throws BusinessException {
 
 		if (StringUtils.isEmpty(nome)) {

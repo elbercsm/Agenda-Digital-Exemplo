@@ -46,6 +46,8 @@ public class DAOConfig {
 
 	private final Properties hibernateProperties() {
 		Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty("hibernate.show_sql", "true");
+		hibernateProperties.setProperty("hibernate.format_sql", "true");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 

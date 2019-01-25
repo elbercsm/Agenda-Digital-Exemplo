@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.iftm.business.BusinessException;
-import br.com.iftm.business.impl.PrestadorServicoBusinessImpl;
+import br.com.iftm.business.PrestadorServicoBusiness;
 import br.com.iftm.entity.PrestadorServico;
 
 @RestController
@@ -19,7 +19,7 @@ import br.com.iftm.entity.PrestadorServico;
 public class PrestadorServicoRest {
 
 	@Autowired
-	private PrestadorServicoBusinessImpl business;
+	private PrestadorServicoBusiness business;
 	// CREATE
 
 	@PostMapping()

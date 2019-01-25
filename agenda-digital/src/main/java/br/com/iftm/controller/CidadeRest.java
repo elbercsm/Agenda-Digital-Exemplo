@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.iftm.business.BusinessException;
 import br.com.iftm.business.CidadeBusiness;
-import br.com.iftm.business.impl.CidadeBusinessImpl;
 import br.com.iftm.entity.Cidade;
 import br.com.iftm.entity.enums.Estado;
 
@@ -26,7 +25,7 @@ import br.com.iftm.entity.enums.Estado;
 public class CidadeRest {
 
 	@Autowired
-	private CidadeBusiness business = new CidadeBusinessImpl();
+	private CidadeBusiness business;
 
 	@PostMapping()
 	public ResponseEntity<?> create(@RequestBody Cidade cidade) {

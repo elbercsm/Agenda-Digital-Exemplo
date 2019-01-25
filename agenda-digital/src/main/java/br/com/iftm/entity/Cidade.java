@@ -1,14 +1,35 @@
 package br.com.iftm.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import br.com.iftm.entity.enums.Estado;
 
-//@Entity
-//@Table(name = "TB_CIDADE")
+@Entity
+@Table(name = "TB_CIDADE", schema = "AGENDADIGITAL", uniqueConstraints = {
+		@UniqueConstraint(name = "UNQ_CIDADE", columnNames = { "NOME_CIDADE", "SIG_ESTADO" }) })
+@SequenceGenerator(name = "SQ_CIDADE", sequenceName = "SQ_CIDADE", initialValue = 1, allocationSize = 1, schema = "AGENDADIGITAL")
 public class Cidade {
 
-	private String nome;
-	private Estado estado;
+	@Id
+	@Column(name = "COD_CIDADE")
+	@GeneratedValue(generator = "SQ_CIDADE", strategy = GenerationType.SEQUENCE)
 	private Integer codigo;
+
+	@Column(name = "NOME_CIDADE", nullable = false, length = 100)
+	private String nome;
+
+	@Column(name = "SIG_ESTADO", nullable = false, length = 2)
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
 
 	public Integer getCodigo() {
 		return codigo;
