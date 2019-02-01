@@ -3,6 +3,8 @@ package br.com.iftm.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -63,4 +65,11 @@ public class TipoServicoDAOImpl implements TipoServicoDAO {
 
 	}
 
+	@Override
+	public TipoServico readById(Integer id) {
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("select t from TipoServico t where t.codigo = :codigo").setParameter("codigo", id);
+
+		return (TipoServico) query.getSingleResult();
+	}
 }

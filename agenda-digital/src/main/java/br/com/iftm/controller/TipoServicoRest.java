@@ -65,6 +65,26 @@ public class TipoServicoRest {
 
 	}
 
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<?> readById(@PathVariable("id") Integer id) {
+
+		try {
+			TipoServico readByName = business.readById(id);
+
+			if (readByName == null) {
+				return ResponseEntity.notFound().build();
+			}
+
+			return ResponseEntity.ok(readByName);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body(e);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body(e);
+		}
+	}
+
 	@GetMapping("/filtro/nome")
 
 	public ResponseEntity<?> readyByName(@PathParam("nome") String nome) {

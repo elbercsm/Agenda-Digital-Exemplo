@@ -40,6 +40,16 @@ public class TipoServicoBusinessImpl implements TipoServicoBusiness {
 		return dao.read();
 	}
 
+	@Override
+	public TipoServico readById(Integer id) throws BusinessException {
+		if (id == null) {
+
+			throw new BusinessException("Código Requerido!");
+		}
+
+		return dao.readById(id);
+	}
+
 	// Get By Name
 	@Override
 	@Transactional(readOnly = true)

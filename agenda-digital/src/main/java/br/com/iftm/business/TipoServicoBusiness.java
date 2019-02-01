@@ -58,4 +58,6 @@ public interface TipoServicoBusiness {
 
 	void delete(Integer id) throws BusinessException;
 
+	TipoServico readById(Integer id) throws BusinessException;
+
 }
